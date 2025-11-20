@@ -1,0 +1,71 @@
+.hero{
+  position : relative;
+
+}
+
+.banner-img{
+  width : 100%;
+  mask-image : linear-gradient(to right , transparent , black 75%);
+  -webkit-mask-image : linear-gradient(to right , transparent , black 75%);
+}
+
+.hero-caption{
+  position : absolute;
+  width : 100%;
+  padding-left : 5%;
+  bottom : 0;
+}
+
+.caption-img{
+  width : 95%;
+  max-width : 400px;
+  margin-bottom : 20px;
+}
+
+.hero-caption p{
+  max-width : 700px;
+  font-size : 18px;
+  margin-bottom : 20px;
+}
+
+.hero-btns{
+  display : flex;
+  gap : 15px;
+  margin-bottom : 50px;
+}
+
+.hero-btns .btn img{
+  width : 24px;
+}
+
+.hero-btns .btn{
+  border : 0;
+  outline : 0;
+  padding : 8px 20px;
+  display : flex;
+  align-items : center;
+  gap : 10px;
+  font-size : 16px;
+  border-radius : 4px;
+  cursor : pointer;
+  font-weight : 600;
+  background-color: white;
+}
+
+.hero-btns .btn.dark-btn{
+  background-color : rgba(109,109,110,0.7);
+  color : rgb(250, 242, 242);
+}
+
+.hero-btns .btn.dark-btn:hover{
+  background-color : rgba(109,109,110,0.4);
+}
+
+.hero-btns .btn:hover{
+  background-color : rgba(232, 232, 238, 0.4);
+}
+
+.more-cards{
+  margin-top : 10px;
+  padding : 6%;
+}
