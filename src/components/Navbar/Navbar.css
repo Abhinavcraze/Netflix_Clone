@@ -82,3 +82,8 @@
   flex-direction : column;
   gap : 10px;
 }
+
+.navbar-scrolled{
+  background-color : #111;
+  transition : background-color 0.3s ease;
+}

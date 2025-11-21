@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.png'
 import search_icon from '../../assets/search_icon.svg'
@@ -7,9 +7,20 @@ import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg' //dropdown arrow icon
 
 const Navbar = () => {
-  return (
-    <div className='navbar'>
 
+  const navRef = React.useRef();
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 70) {                /*scroll access left to right*/
+        navRef.current.classList.add("navbar-scrolled");
+      } else {
+        navRef.current.classList.remove("navbar-scrolled");
+      }
+    });
+  }, []);
+  return (
+    <div ref={navRef} className='navbar'>
       <div className="navbar-left">
         <img src={logo} alt="Logo" className="navbar-logo" />
         <ul>
