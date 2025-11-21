@@ -2,6 +2,7 @@ import React from 'react'
 import './Login.css'
 import logo from '../../assets/logo.png'
 import { signup , login } from '../../firebase'
+import netflix_spinner from '../../assets/netflix_spinner.gif'
 
 const Login = () => {
 
@@ -10,17 +11,29 @@ const Login = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(signState) {
-      signup(name, email, password);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    if (signState) {
+      await signup(name, email, password);
     } else {
-      login(email, password);
+      await login(email, password);
     }
+  } catch (error) {
+    console.error("Auth Error:", error);
   }
 
+  setLoading(false);
+};
+
   return (
+    loading?<div className="login-spinner">
+      <img src={netflix_spinner} alt="Loading..." />
+    </div> : 
     <div className = 'login'>
       <img src={logo} className='login-logo' alt="" />
       <div className="login-container">
@@ -32,7 +45,9 @@ const Login = () => {
           <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Your Email...' />
           <label htmlFor="password">Password</label>
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Your Password...' />
-          <button type='submit' className='login-btn onClick={handleSubmit}'>{signState ? "Sign Up" : "Sign In"}</button>
+          <button type="submit" className="login-btn">
+              {signState ? "Sign Up" : "Sign In"}
+          </button>
 
           <div className="form-help">
             <div className="remember">
