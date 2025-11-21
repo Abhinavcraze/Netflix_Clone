@@ -1,5 +1,6 @@
 import React , {useRef , useEffect} from 'react'
 import './Titlecards.css'
+import { Link } from 'react-router-dom'
 // import cards_data from '../../assets/cards/Cards_data'  (before using apiDaata gettting data from an assets)
 
 const Titlecards = ({title , category}) => {  /*category categories of movies eg: now playing,popular , top rated ,upcoming etc*/
@@ -50,10 +51,10 @@ const Titlecards = ({title , category}) => {  /*category categories of movies eg
           //   <p className='card'>{card.title}</p>
           // </div>
 
-          <div className="card" key={card.id}>
+          <Link to={`/player/${card.id}`} className="card" key={card.id}>
             <img src={`https://image.tmdb.org/t/p/w500${card.backdrop_path}`} alt={card.title} />  {/*tmdb image path*/}
             <p className='card'>{card.original_title}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
