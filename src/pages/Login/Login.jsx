@@ -1,24 +1,38 @@
 import React from 'react'
 import './Login.css'
 import logo from '../../assets/logo.png'
+import { signup , login } from '../../firebase'
 
 const Login = () => {
 
   const [signState, setSignState] = React.useState(true); //true for sign up, false for sign in
   
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(signState) {
+      signup(name, email, password);
+    } else {
+      login(email, password);
+    }
+  }
+
   return (
     <div className = 'login'>
       <img src={logo} className='login-logo' alt="" />
       <div className="login-container">
         <h1>{signState ? "Sign Up" : "Sign In"}</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           {signState === true ? <label htmlFor="name">Name</label> : null}
-          {signState === true ?  <input type="text" placeholder='Your Name...' /> : null}
+          {signState === true ?  <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder='Your Name...' /> : null}
           <label htmlFor="email">Email</label>
-          <input type="email" placeholder='Your Email...' />
+          <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Your Email...' />
           <label htmlFor="password">Password</label>
-          <input type="password" placeholder='Your Password...' />
-          <button type='submit' className='login-btn'>{signState ? "Sign Up" : "Sign In"}</button>
+          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Your Password...' />
+          <button type='submit' className='login-btn onClick={handleSubmit}'>{signState ? "Sign Up" : "Sign In"}</button>
 
           <div className="form-help">
             <div className="remember">
