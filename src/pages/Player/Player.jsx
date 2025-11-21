@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import './Player.css'
 import back_arrow from '../../assets/back_arrow_icon.png'
-import { useParams } from 'react-router-dom'
+import { useNavigate , useParams } from 'react-router-dom'
 
 const Player = () => {
 
   const { id } = useParams();
+
+  const navigate = useNavigate();
   const[apiData, setApiData] = React.useState({name: '', key :'', published_at: '', type: ''});
 
   const options = {
@@ -26,7 +28,7 @@ useEffect(() => {
 
   return (
     <div className='player'>
-      <img src={back_arrow} alt="" />
+      <img src={back_arrow} alt="" onClick={() => {navigate(-2)}}/> {/*navigate to 2 process behind*/}
       {/* <iframe src={`https://www.youtube.com/embed/37eRt5sl7ZE`} */}  {/*for reference youtube channel*/}
         <iframe src={`https://www.youtube.com/embed/${apiData.key}`}
           title='api trailer' width="90%" height="500px"
