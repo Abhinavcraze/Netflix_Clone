@@ -8,7 +8,15 @@ import {auth} from './firebase'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
 
+//for adding toastify content
+import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+
 const App = () => {
+
+  const notify = () => toast("Wow so easy!"); //for toastify content
+
 
   const navigate = useNavigate();
 
@@ -28,6 +36,10 @@ const App = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer theme='dark'/>
+      </div>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
