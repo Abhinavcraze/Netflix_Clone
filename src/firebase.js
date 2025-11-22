@@ -1,6 +1,7 @@
 //for authentication of signup / login
 
 import { initializeApp } from "firebase/app";
+
 import {createUserWithEmailAndPassword , 
   signInWithEmailAndPassword , getAuth , signOut} from "firebase/auth";
 import {addDoc , collection ,getFirestore} from "firebase/firestore";
@@ -16,6 +17,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 
