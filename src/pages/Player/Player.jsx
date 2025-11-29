@@ -26,6 +26,7 @@ useEffect(() => {
 }, []);
 
 
+
   return (
     <div className='player'>
       <img src={back_arrow} alt="" onClick={() => {navigate(-2)}}/> {/*navigate to 2 process behind*/}

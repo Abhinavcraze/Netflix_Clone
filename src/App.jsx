@@ -16,9 +16,6 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
 
-  //const notify = () => toast("Wow so easy!"); //for toastify content
-
-
   const navigate = useNavigate();
 
   React.useEffect(() => {
